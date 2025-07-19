@@ -5,8 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @AllArgsConstructor
@@ -16,10 +19,10 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true, nullable = false)
-    private String uuid;
+    private String uuid = UUID.randomUUID().toString();
 
     @Column(unique = true, nullable = false)
     private String nationalCardId;
@@ -38,7 +41,7 @@ public class User {
     @Column(length = 10, nullable = false)
     private String gender;
 
-    private LocalDateTime dob;
+    private LocalDate dob;
 
     @Column(length = 100)
     private String cityOrProvince;
@@ -67,18 +70,19 @@ public class User {
     @Column(length = 100)
     private BigDecimal monthlyIncomeRance;
 
-    @Column(length = 10, nullable = false , unique = true)
+    @Column(nullable = false , unique = true)
     private String phoneNumber;
 
     @Column(unique = true)
     private String onSignalId;
 
-    private Boolean isDeleted;
-    private Boolean isBlocked;
+    private Boolean isDeleted = false;
+    private Boolean isBlocked = false;
     private Boolean isStudent;
 
     @Column(unique = true, nullable = false)
     private String studentCardId;
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",

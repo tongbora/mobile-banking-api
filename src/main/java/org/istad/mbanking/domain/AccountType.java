@@ -18,6 +18,9 @@ public class AccountType {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(length = 100 , nullable = false, unique = true)
+    private String alias;
+
     @Column(unique = true, nullable = false, length = 100)
     private String name;
 
