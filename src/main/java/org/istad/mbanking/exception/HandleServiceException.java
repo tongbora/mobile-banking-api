@@ -3,6 +3,7 @@ package org.istad.mbanking.exception;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Map;
@@ -20,5 +21,14 @@ public class HandleServiceException {
         return new ResponseEntity<>(body, e.getStatusCode());
     }
 
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseEntity<?> maxUploadSizeException(MaxUploadSizeExceededException e) {
+        return ResponseEntity.badRequest().body(
+                Map.of("status", e.getStatusCode(),
+                        "message", "File size exceeds limit of 5MB",
+                        "error", e.getMessage()
+                        )
+        );
+    }
 
 }
