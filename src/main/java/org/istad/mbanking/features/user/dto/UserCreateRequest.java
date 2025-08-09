@@ -7,39 +7,40 @@ import java.time.LocalDate;
 import java.util.List;
 
 public record UserCreateRequest(
-        @NotNull
+        @NotNull (message = "The national card id is required")
 //        @Size(max = 20)
         String nationalCardId,
 
-        @Digits(integer = 4, fraction = 0)
+        @Digits(integer = 4, fraction = 0, message = "The pin must be a number")
         @Positive
+        @NotNull(message = "The pin is required")
         Integer pin,
 
-        @NotBlank
-        @Size(min = 8, max = 15)
+        @NotBlank(message = "The phone number is required")
+        @Size(min = 8, max = 15, message = "The phone number must be between 8 and 15 characters")
         String phoneNumber,
 
-        @NotBlank
+        @NotBlank(message = "The password is required")
         String password,
 
-        @NotBlank
+        @NotBlank(message = "The confirm password is required")
         String confirmPassword,
 
-        @NotBlank
+        @NotBlank(message = "The name is required")
         @Size(max = 40)
         String name,
 
-        @NotBlank
+        @NotBlank(message = "The gender is required")
         @Size(max = 6)
         String gender,
 
-        @NotNull
+        @NotNull(message = "The date of birth is required")
         LocalDate dob,
 
         @Size(max = 20)
         String studentCardId,
 
-        @NotEmpty
+        @NotEmpty(message = "At least one role is required")
         List<RoleRequest> roles
 ) {
 }

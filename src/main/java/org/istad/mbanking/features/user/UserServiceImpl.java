@@ -6,9 +6,11 @@ import org.istad.mbanking.domain.Role;
 import org.istad.mbanking.domain.User;
 import org.istad.mbanking.features.user.dto.*;
 import org.istad.mbanking.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -23,6 +25,10 @@ public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    @Value("${media.base-uri}")
+    private String baseUri;
 
     @Override
     public UserDetailsResponse createNew(UserCreateRequest request) {
@@ -47,8 +53,11 @@ public class UserServiceImpl implements UserService{
                     HttpStatus.BAD_REQUEST,
                     "Passwords are not matching");
         }
-
         User user = userMapper.fromUserCreateRequest(request);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setAccountNonExpired(true);
+        user.setAccountNonLocked(true);
+        user.setCredentialsNonExpired(true);
         user.setIsBlocked(false);
         user.setIsDeleted(false);
         user.setCreatedAt(LocalDateTime.now());
@@ -164,5 +173,18 @@ public class UserServiceImpl implements UserService{
         }
         userRepository.enableUserByUuid(uuid);
         return new BaseMessage("User has been enable.");
+    }
+
+    @Override
+    public String updateProfileImage(String uuid, String mediaName) {
+        User user = userRepository.findByUuid(uuid).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found")
+        );
+        if(user.getIsDeleted().equals(true)){
+            throw new ResponseStatusException(HttpStatus.CONFLICT,"User already disble");
+        }
+        user.setProfileImage(mediaName);
+        userRepository.save(user);
+        return baseUri + "IMAGE/" + mediaName;
     }
 }

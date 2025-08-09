@@ -4,10 +4,8 @@ package org.istad.mbanking.features.user;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.istad.mbanking.base.BaseMessage;
-import org.istad.mbanking.features.user.dto.UserCreateRequest;
-import org.istad.mbanking.features.user.dto.UserDetailsResponse;
-import org.istad.mbanking.features.user.dto.UserResponse;
-import org.istad.mbanking.features.user.dto.UserUpdateRequest;
+import org.istad.mbanking.base.BaseResponse;
+import org.istad.mbanking.features.user.dto.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -91,6 +89,11 @@ public class UserController {
         return userService.enableUserByUuid(uuid);
     }
 
-
+    @PutMapping("/{uuid}/profile-image")
+    public BaseResponse<?> updateProfileImage(@PathVariable String uuid,
+                                           @Valid @RequestBody UserProfileImageRequest usesProfileImageRequest){
+        String newUri = userService.updateProfileImage(uuid, usesProfileImageRequest.mediaName());
+        return new BaseResponse<>(newUri);
+    }
 
 }

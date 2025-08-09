@@ -23,4 +23,19 @@ public interface UserService {
     BaseMessage deleteUserByUuid(String uuid);
     BaseMessage disableUserByUuid(String uuid);
     BaseMessage enableUserByUuid(String uuid);
+
+    String updateProfileImage(String uuid, String mediaName);
+
+
+
+
+//    String updateName(String uuid, String name);
+//    String updateGender(String uuid, String gender);
+//    String updateDob(String uuid, String dob);
+//    String updateCityOrProvince(String uuid, String cityOrProvince);
+//    String updateKhanOrDistrict(String uuid, String khanOrDistrict);
+//    String updateVillage(String uuid, String village);
+//    String updateStreet(String uuid, String street);
+//    String updateEmployeeType(String uuid, String employeeType);
+//    String updatePosition(String uuid, String position);
 }

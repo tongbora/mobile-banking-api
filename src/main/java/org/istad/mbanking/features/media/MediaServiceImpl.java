@@ -3,6 +3,7 @@ package org.istad.mbanking.features.media;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.istad.mbanking.features.media.dto.MediaResponse;
+import org.istad.mbanking.util.FileSizeUtil;
 import org.istad.mbanking.util.MediaUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
@@ -36,10 +37,13 @@ public class MediaServiceImpl implements MediaService{
     @Value("${media.base-uri}")
     private String baseUri;
 
+    @Value("${spring.servlet.multipart.max-request-size}")
+    private String requestMaxSize;
+
 
     @Override
     public MediaResponse uploadSingle(MultipartFile file, String folderName) {
-//        log.info("Uploading file {}", file.getContentType());
+        Long maxSize = FileSizeUtil.parseSizeToBytes(requestMaxSize);
 
         // Generate a unique name for file
         String newName = UUID.randomUUID().toString();
@@ -53,8 +57,8 @@ public class MediaServiceImpl implements MediaService{
         // Copy file
         Path path = Paths.get(serverPath, folderName, newName);
         log.info("File path: {}", path);
-        if(file.getSize() > 5000000){
-            throw new MaxUploadSizeExceededException(5000000);
+        if(file.getSize() > maxSize){
+            throw new MaxUploadSizeExceededException(maxSize);
         }
 
         try {

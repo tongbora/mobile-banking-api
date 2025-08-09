@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome - Developer Cambodia Community</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4; line-height: 1.6;">
+<!-- Email Container -->
+<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f4f4f4;">
+  <tr>
+    <td style="padding: 20px 0;">
+      <!-- Main Content Table -->
+      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="margin: 0 auto; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+
+        <!-- Header Section -->
+        <tr>
+          <td style="background-color: #f2d522; padding: 40px 30px; text-align: center; border-radius: 10px 10px 0 0;">
+            <!-- Logo -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 auto;">
+              <tr>
+                <td style="width: 80px; height: 80px; background-color: rgba(255,255,255,0.2); border-radius: 50%; text-align: center; vertical-align: middle; border: 2px solid rgba(255,255,255,0.3);">
+                  <span style="font-size: 2rem; font-weight: bold; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">DC</span>
+                </td>
+              </tr>
+            </table>
+
+            <!-- User Greeting -->
+            <div th:if="${user}" style="margin-top: 20px; background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);">
+              <p style="margin: 0; font-size: 1.1rem; color: white; font-weight: 500;">
+                Hello, <strong th:text="${user.name}">Developer</strong>!
+                <span style="font-size: 1.2rem;">🇰🇭</span>
+                Welcome to our community!
+              </p>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Welcome Content -->
+        <tr>
+          <td style="padding: 40px 30px;">
+            <!-- Welcome Title -->
+            <h1 style="margin: 0 0 10px 0; font-size: 2.5rem; font-weight: 700; color: #2c3e50; text-align: center;">Welcome!</h1>
+
+            <!-- Community Name -->
+            <h2 style="margin: 0 0 30px 0; font-size: 1.5rem; color: #e74c3c; font-weight: 600; text-align: center;">Developer Cambodia Community</h2>
+
+            <!-- Description -->
+            <p style="margin: 0 0 40px 0; font-size: 1.1rem; color: #555; text-align: center; line-height: 1.8;">
+              Join Cambodia's most vibrant developer community where innovation meets tradition.
+              Connect with passionate developers, share knowledge, and build the future of technology in Cambodia together.
+            </p>
+
+            <!-- Features Section -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td style="padding-bottom: 20px;">
+                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <tr>
+                      <!-- Feature 1 -->
+                      <td width="48%" style="vertical-align: top; padding-right: 10px;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f8f9fa; border-radius: 10px; padding: 20px; border: 1px solid #e9ecef;">
+                          <tr>
+                            <td style="text-align: center;">
+                              <div style="width: 50px; height: 50px; background-color:#f2d522; border-radius: 50%; position: relative; margin: 0 auto 15px auto;">
+                                <span style="color: white; font-size: 1.2rem; display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">💻</span>
+                              </div>
+                              <h3 style="margin: 0 0 10px 0; font-size: 1.2rem; font-weight: 600; color: #2c3e50;">Code Together</h3>
+                              <p style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.5;">Collaborate on exciting projects and learn from experienced developers.</p>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+
+                      <!-- Feature 2 -->
+                      <td width="48%" style="vertical-align: top; padding-left: 10px;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f8f9fa; border-radius: 10px; padding: 20px; border: 1px solid #e9ecef;">
+                          <tr>
+                            <td style="text-align: center;">
+                              <div style="width: 50px; height: 50px; background-color:#f2d522; border-radius: 50%; position: relative; margin: 0 auto 15px auto;">
+                                <span style="color: white; font-size: 1.2rem; display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">🚀</span>
+                              </div>
+                              <h3 style="margin: 0 0 10px 0; font-size: 1.2rem; font-weight: 600; color: #2c3e50;">Grow Your Skills</h3>
+                              <p style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.5;">Access workshops, tutorials, and mentorship programs.</p>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding-bottom: 20px;">
+                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <tr>
+                      <!-- Feature 3 -->
+                      <td width="48%" style="vertical-align: top; padding-right: 10px;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f8f9fa; border-radius: 10px; padding: 20px; border: 1px solid #e9ecef;">
+                          <tr>
+                            <td style="text-align: center;">
+                              <div style="width: 50px; height: 50px; background-color:#f2d522; border-radius: 50%; position: relative; margin: 0 auto 15px auto;">
+                                <span style="color: white; font-size: 1.2rem; display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">🔌</span>
+                              </div>
+                              <h3 style="margin: 0 0 10px 0; font-size: 1.2rem; font-weight: 600; color: #2c3e50;">Network & Connect</h3>
+                              <p style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.5;">Meet like-minded developers and build lasting relationships.</p>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+
+                      <!-- Feature 4 -->
+                      <td width="48%" style="vertical-align: top; padding-left: 10px;">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f8f9fa; border-radius: 10px; padding: 20px; border: 1px solid #e9ecef;">
+                          <tr>
+                            <td style="text-align: center;">
+                              <div style="width: 50px; height: 50px; background-color:#f2d522; border-radius: 50%; position: relative; margin: 0 auto 15px auto;">
+                                <span style="color: white; font-size: 1.2rem; display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">💡</span>
+                              </div>
+                              <h3 style="margin: 0 0 10px 0; font-size: 1.2rem; font-weight: 600; color: #2c3e50;">Share Knowledge</h3>
+                              <p style="margin: 0; color: #666; font-size: 0.9rem; line-height: 1.5;">Contribute by sharing your expertise and learning from others.</p>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- CTA Button -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td style="text-align: center; padding-top: 30px;">
+                  <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 auto;">
+                    <tr>
+                      <td style="background-color:#f2d522; border-radius: 25px; padding: 15px 40px;">
+                        <a href="https://tongbora.vercel.app/" th:href="${joinUrl ?: 'https://tongbora.vercel.app/'}"
+                           style="color: white; text-decoration: none; font-weight: 600; font-size: 1.1rem; display: block;">
+                          Join Our Community
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="background-color: #f8f9fa; padding: 30px; text-align: center; border-radius: 0 0 10px 10px; border-top: 1px solid #e9ecef;">
+            <p style="margin: 0 0 10px 0; color: #666; font-size: 0.9rem;">
+              Developer Cambodia Community
+            </p>
+            <p style="margin: 0; color: #999; font-size: 0.8rem;">
+              Building the future of technology in Cambodia 🇰🇭
+            </p>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

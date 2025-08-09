@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -16,6 +17,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 @Table(name = "users")
+@ToString(exclude = {"roles", "userAccountList"})
 public class User {
 
     @Id
@@ -75,6 +77,10 @@ public class User {
 
     @Column(unique = true)
     private String onSignalId;
+
+    private boolean isAccountNonExpired;
+    private boolean isAccountNonLocked;
+    private boolean isCredentialsNonExpired;
 
     private Boolean isDeleted = false;
     private Boolean isBlocked = false;

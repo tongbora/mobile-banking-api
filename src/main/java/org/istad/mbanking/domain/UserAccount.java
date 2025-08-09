@@ -18,11 +18,12 @@ public class UserAccount {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Account account;
 
     private Boolean isDeleted;
+    private Boolean isBlocked;
     private LocalDateTime createdAt;
 }

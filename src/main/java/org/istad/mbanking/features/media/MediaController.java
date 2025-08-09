@@ -7,7 +7,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -44,13 +43,13 @@ public class MediaController {
     }
 
     @GetMapping("/download/{mediaName}")
-    public ResponseEntity<Resource> downloadMediaByName(@PathVariable String mediaName, String folderName) {
+    public ResponseEntity<Resource> downloadMediaByName(@PathVariable String mediaName) {
         Resource resource = mediaService.downloadMediaByName(mediaName, "IMAGE");
 
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 // this line tells the browser to download resources
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + resource.getFilename())
                 .body(resource);
     }
 
